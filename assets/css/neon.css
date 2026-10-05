@@ -1,0 +1,69 @@
+
+/* NEON B — 2026-10-05: B（ネオン・標準）を採用。
+   枠・ボタン・静止した背景の光。本文の発光や点滅は使わない。
+   色や光量を変更するときは、以下の変数を編集してください。 */
+html[data-neon="balanced"] {
+  --bg: #090f16; --surface: #101c25; --surface-raised: #182b34;
+  --text: #f0f6f5; --muted: #b4c6cb; --accent: #83f5d0;
+  --accent-2: #e9a8f8; --line: #354d5c;
+  --ambient: .34; --grid-opacity: .25; --neon-strength: .2;
+}
+.hero-stage { position: relative; isolation: isolate; overflow: hidden; }
+.hero-stage::before {
+ content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none;
+ background: radial-gradient(ellipse at 84% 30%, #703c9a 0%, transparent 58%), radial-gradient(ellipse at 8% 100%, #227b73 0%, transparent 55%);
+ opacity: var(--ambient, 0);
+}
+.hero-stage::after {
+ content: ""; position: absolute; z-index: -1; pointer-events: none;
+ top: 0; right: 0; bottom: 0; width: 52%;
+ background-image: linear-gradient(#51899c44 1px, transparent 1px), linear-gradient(90deg,#51899c44 1px, transparent 1px);
+ background-size: 52px 52px; opacity: var(--grid-opacity,0);
+ mask-image: linear-gradient(90deg,transparent,#000 60%);
+}
+.button { transition: transform .18s; }
+.hero { padding-block: 70px; }
+.hero-copy { min-width: 0; }
+h1 { font-size: clamp(34px,4vw,54px); line-height: 1.5; letter-spacing: -.045em; }
+h1 > span { white-space: nowrap; }
+.hero-lead { font-size: 14px; }
+.hero-visual { position: relative; transform: none; }
+.hero-media-note { padding: 8px 4px 1px; color: var(--muted); font-size: 11px; line-height: 1.75; }
+html[data-neon="balanced"] .site-header { background: rgb(9 15 22 / 97%); border-bottom-color: #427766; box-shadow: 0 1px 15px #83f5d016; }
+html[data-neon="balanced"] .hero-visual {
+ background: #0b141e; border-color: #a4e8d2;
+ box-shadow: 0 0 8px rgb(131 245 208 / var(--neon-strength)), 0 0 42px rgb(131 245 208 / var(--neon-strength)), 0 20px 60px #0007;
+}
+html[data-neon="balanced"] .hero-visual::before,
+html[data-neon="balanced"] .hero-visual::after {
+ content: ""; position: absolute; width: 31px; height: 31px; border: 2px solid var(--accent-2); pointer-events: none;
+ box-shadow: 0 0 12px rgb(233 168 248 / var(--neon-strength));
+}
+html[data-neon="balanced"] .hero-visual::before { left: -5px; top: -5px; border-right: 0; border-bottom: 0; border-radius: 14px 0 0 0; }
+html[data-neon="balanced"] .hero-visual::after { right: -5px; bottom: -5px; border-left: 0; border-top: 0; border-radius: 0 0 14px 0; }
+html[data-neon="balanced"] .button-primary { background: #16372e; border: 1px solid var(--accent); color: var(--accent); box-shadow: inset 0 0 15px #83f5d00c,0 0 18px rgb(131 245 208 / var(--neon-strength)); }
+html[data-neon="balanced"] .button-primary:hover { background: var(--accent); color: #09211b; }
+html[data-neon="balanced"] .text-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+html[data-neon="balanced"] .project { border-top-color: #5b9785; }
+html[data-neon="balanced"] .project:hover { border-color: #7cb5a3; }
+html[data-neon="balanced"] .gallery-choice[aria-pressed="true"] { box-shadow: 0 0 14px rgb(131 245 208 / var(--neon-strength)); }
+html[data-neon="balanced"] .engineering-section { background: #0d171f; }
+html[data-neon="balanced"] .tag-accent { background: #193c32; border-color: #598976; }
+html[data-neon="balanced"] .tool-strip { border-bottom-color: #477663; }
+.design-intent { margin-block: 28px 8px; max-width: 920px; padding: 18px 22px; border-left: 2px solid var(--accent); background: var(--surface); }
+.design-intent .eyebrow { margin-bottom: 8px; font-size: 10px; }
+.design-intent > p:last-child { font-size: 14px; color: var(--muted); line-height: 2; }
+.gameplay-proof { padding: 28px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+.gameplay-proof .eyebrow { font-size: 10px; }
+.gameplay-proof h4 { margin: 0; font-size: 24px; line-height: 1.7; font-weight: 700; }
+.proof-list { margin-top: 25px; }
+.proof-list > div { padding-block: 14px; border-top: 1px solid var(--line); }
+.proof-list dt { color: var(--accent); font-size: 12px; margin-bottom: 5px; }
+.proof-list dd { font-size: 13px; color: var(--muted); }
+.proof-caveat { margin-top: 8px; font-size: 12px; color: var(--muted); }
+.model-credit { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+@media(max-width:1120px) { h1 { font-size: 42px; } }
+@media(max-width:900px) { .hero { padding-block:50px; } h1 { font-size:48px; } .hero-stage::after { width:100%; mask-image:linear-gradient(180deg,transparent,#000); } }
+@media(max-width:600px) { .hero { padding-block:36px; } h1 { font-size:clamp(29px,7.5vw,40px); } .hero-lead { font-size:13px; } .design-intent { padding:17px; } .design-intent > p:last-child { font-size:13px; } .gameplay-proof { padding:20px; } .gameplay-proof h4 { font-size:22px; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } }
+@media print { html[data-neon] { --bg:white; --surface:white; --text:#16201b; --muted:#3f4c45; --accent:#245731; --line:#a4aaa6; color-scheme:light; } .hero-stage::before,.hero-stage::after,.hero-visual::before,.hero-visual::after { display:none !important; } .site-header,.hero-visual,.engineering-section { background:white !important; box-shadow:none !important; } .button-primary { background:white !important; color:#245731 !important; box-shadow:none !important; } }
