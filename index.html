@@ -1,65 +1,59 @@
 <!DOCTYPE html>
 
-<html data-neon="balanced" lang="ja">
+<html data-neon="balanced" data-revision="20261006-a" lang="ja">
 <head><!-- 装飾はB案を採用。見出しは仮案。最新3D画像の選定・公開はまだ行っていません。 -->
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <!-- EDIT 1: 公開する表示名。GitHubのリンク先とは別に変更してください。 -->
-<title>MinaWoMinasai | Game Programming Portfolio</title>
-<meta content="C++ / DirectX 12で制作するゲーム開発ポートフォリオ。たたかうせんしゃ、Resonanceと、描画・ゲーム内ツールの取り組みを紹介します。" name="description"/>
+<title>堀毛 翔斗 | Game Programming Portfolio</title>
+<meta content="堀毛 翔斗（Horike Hayato）のゲーム制作ポートフォリオ。C++ / DirectX 12で制作した「たたかうせんしゃ」の遊び方、3Dネオンと戦闘処理の連携、制作で大切にしていることを紹介します。" name="description"/>
 <meta content="#090f16" name="theme-color"/>
-<meta content="MinaWoMinasai | Game Programming Portfolio" property="og:title"/>
+<meta content="堀毛 翔斗 | Game Programming Portfolio" property="og:title"/>
 <meta content="つくった技術を、ゲームの中へ。C++ / DirectX 12によるゲーム制作と、描画表現を遊びにつなぐ取り組み。" property="og:description"/>
 <meta content="website" property="og:type"/>
-<!-- 公開URLが決まるまでは、og:url / og:image / canonicalを推測で設定しません。 -->
-<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090f16'/%3E%3Cpath d='M14 46V18l18 18 18-18v28' fill='none' stroke='%2383f5d0' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E" rel="icon"/>
+
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090f16'/%3E%3Cpath d='M18 16v32M46 16v32M18 32h28' fill='none' stroke='%2383f5d0' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E" rel="icon"/>
 <link href="assets/css/style.css" rel="stylesheet"/>
 <script defer="" src="assets/js/site.js"></script>
-<link href="assets/css/neon.css" rel="stylesheet"/></head>
+<link href="assets/css/neon.css" rel="stylesheet"/><link href="portfolio-refresh.css?v=20261006a" rel="stylesheet"/><script defer="" src="portfolio-refresh.js?v=20261006a"></script><link href="https://minawominasai.github.io/portfolio/" rel="canonical"/><meta content="https://minawominasai.github.io/portfolio/" property="og:url"/></head>
 <body id="top">
 <a class="skip-link" href="#main">本文へ移動</a>
 <header class="site-header">
 <div class="container header-inner">
-<a aria-label="MinaWoMinasai ポートフォリオの先頭へ" class="brand" href="#top">
-<span aria-hidden="true" class="brand-mark">M<span>／</span></span>
-<span class="brand-name">MinaWoMinasai<span>GAME PROGRAMMING</span></span>
+<a aria-label="堀毛 翔斗 ポートフォリオの先頭へ" class="brand" href="#top">
+<span aria-hidden="true" class="brand-mark">H<span>／</span></span>
+<span class="brand-name">堀毛 翔斗<span>HORIKE HAYATO / GAME PROGRAMMING</span></span>
 </a>
-<nav aria-label="メインナビゲーション" class="main-nav">
-<a href="#projects">作品</a>
-<a href="#engineering">技術と工夫</a>
-<a href="#about">プロフィール</a>
-</nav>
+<nav aria-label="メインナビゲーション" class="main-nav"><a href="#projects">作品</a><a href="#engineering">技術と工夫</a><a href="#approach">制作方針</a><a href="#about">プロフィール</a></nav>
 <a aria-label="GitHubプロフィール（新しいタブで開く）" class="header-github" href="https://github.com/MinaWoMinasai" rel="noopener noreferrer" target="_blank">GitHub <span aria-hidden="true">↗</span></a>
 </div>
 </header>
 <main id="main">
 <div class="hero-stage"><section aria-labelledby="hero-title" class="hero container">
 <div class="hero-copy">
-<p class="eyebrow"><span aria-hidden="true" class="tiny-line"></span> GAME DEVELOPMENT PORTFOLIO</p>
+<p class="eyebrow"><span aria-hidden="true" class="tiny-line"></span> C++ / DIRECTX 12 · GAME DEVELOPMENT</p>
 <!-- EDIT 2: 自分が最も伝えたいことに合わせて、見出しと導入文を仕上げてください。 -->
 <!-- 見出し未確定: 「つくった技術を、ゲームの中へ。」は仮案。変更時はog:descriptionも見直してください。 --><h1 id="hero-title">つくった技術を、<br/><span>ゲームの中へ。</span></h1>
-<p class="hero-lead">C++ / DirectX 12によるゲーム制作。<br/>描画表現を実装するだけでなく、<br class="desktop-break"/>ゲームの中での役割と、遊びやすさを考えています。</p>
+<p class="hero-lead">ネオンの見た目だけで、終わらせない。<br/>戦い方・見やすさ・調整のしやすさまで考える、<br class="desktop-break"/>ゲーム制作のポートフォリオです。</p>
 <div class="button-row">
 <a class="button button-primary" href="#projects">作品をみる <span aria-hidden="true">↘</span></a>
 <a class="text-link" href="#engineering">実装の工夫へ <span aria-hidden="true">→</span></a>
-</div>
+</div><p class="hero-signature"><span aria-hidden="true">＋</span><span>個人制作 <strong>たたかうせんしゃ</strong><br/>ゲームプレイ / 描画 / 制作ツール</span></p>
 </div>
 <figure class="hero-visual">
-<div class="visual-topline"><span><i aria-hidden="true"></i> PERSONAL PROJECT</span><span>01 / SELECTED</span></div>
+<div class="visual-topline"><span><i aria-hidden="true"></i> TATAKAU SENSHA</span><span>DEVELOPMENT CAPTURE</span></div>
 <!-- EDIT HERO: メイン画像は hero-main.webp。独立して差し替え可能。画像を変えたらsrc/alt/width/heightとfigcaption、注記も更新してください。拡張子を変えるだけでは画像形式は変換されません。 --><a aria-label="たたかうせんしゃの紹介へ" class="hero-image-link" href="#tatakau-sensha">
 <img alt="黒いフィールドで、ネオンに光る戦車と図形の敵が戦う『たたかうせんしゃ』の開発中の画面" fetchpriority="high" height="720" src="assets/images/hero-main.webp" width="1280"/>
 <span aria-hidden="true" class="visual-arrow">↗</span>
 </a>
 <figcaption class="visual-caption"><div><strong>たたかうせんしゃ</strong><span>ROGUELITE / ACTION</span></div><span class="small-label">過去の開発画面</span></figcaption>
-<p class="hero-media-note">掲載画像は過去の開発記録です。現在のゲーム画面とは異なります。</p></figure>
+<p class="hero-media-note">実機の開発記録。掲載画面は過去のバージョンです。</p></figure>
 </section></div>
-<div aria-label="作品で使用している技術" class="container tool-strip">
-<span class="strip-label">BUILT WITH</span><span>C++</span><span>DirectX 12</span><span>HLSL</span><span>ImGui</span><span>JSON</span>
-</div>
+<nav aria-label="見たい内容から移動" class="site-map container"><a href="#tatakau-sensha"><span class="map-number">01</span><span><strong>どんなゲーム？</strong><small>代表作・遊び方・操作</small></span><span aria-hidden="true" class="map-arrow">↘</span></a><a href="#engineering"><span class="map-number">02</span><span><strong>どう作った？</strong><small>描画・戦闘連携・調整ツール</small></span><span aria-hidden="true" class="map-arrow">↘</span></a><a href="#approach"><span class="map-number">03</span><span><strong>何を大切に？</strong><small>制作の考え方・今後の改善</small></span><span aria-hidden="true" class="map-arrow">↘</span></a></nav>
 <section aria-labelledby="projects-title" class="section container" id="projects">
 <div class="section-heading">
-<div><p class="eyebrow">01 / SELECTED WORK</p><h2 id="projects-title">作品から、伝える。</h2></div>
-<p>個人制作とチーム制作。<br/>ゲームの特徴と、自分の取り組みを紹介します。</p>
+<div><p class="eyebrow">01 / SELECTED WORK</p><h2 id="projects-title">制作作品</h2></div>
+<p>個人制作とチーム制作から、<br/>担当したことが伝わる作品を掲載しています。</p>
 </div>
 <!-- EDIT 3: 最新の画像はassets/images内の同名ファイルを置き換えて差し替えられます。 -->
 <article aria-labelledby="tank-title" class="project featured-project" id="tatakau-sensha">
@@ -82,18 +76,28 @@
 <p class="project-kicker"><span class="tag tag-accent">個人制作</span><span class="mono">FEATURED PROJECT</span></p>
 <h3 id="tank-title">たたかうせんしゃ</h3>
 <p class="genre">見下ろし型ローグライトアクション</p>
-<p class="project-description">進路を選び、強化を組み合わせ、最深部のボスを目指す。シューター・ドローン・近接の３つの戦闘スタイルで攻略する戦車アクションです。</p>
+<p class="project-description">戦車を操り、進路と強化を選びながら最深部のボスを目指す、見下ろし型ローグライトアクション。C++ / DirectX 12の自作エンジンで制作しています。</p>
 <dl class="project-facts">
-<div><dt>制作範囲</dt><dd>設計・プログラム全般</dd></div>
+<div><dt>制作範囲</dt><dd>個人制作 / 設計・プログラム全般</dd></div>
 <div><dt>開発環境</dt><dd>C++20 / DirectX 12 / Windows</dd></div>
 <div><dt>取り組み</dt><dd>ゲームプレイ・描画・調整ツール</dd></div>
-</dl>
+<div><dt>素材・基盤</dt><dd>外部ライブラリ・第三者素材を利用。出典と自作範囲は区別して記載。</dd></div></dl>
 <div class="button-row project-buttons">
 <a class="button button-primary" href="#engineering">技術と工夫を読む <span aria-hidden="true">↓</span></a>
 <a aria-label="たたかうせんしゃのソースコード（GitHub、新しいタブで開く）" class="text-link" href="https://github.com/MinaWoMinasai/tatakau-sensha" rel="noopener noreferrer" target="_blank">ソースコード <span aria-hidden="true">↗</span></a>
 </div>
 </div>
-</article>
+<section aria-labelledby="playbook-title" class="playbook">
+<div class="playbook-heading"><div><p class="eyebrow">GAMEPLAY / 遊びの流れ</p><h4 id="playbook-title">進路を選ぶ。戦う。<br class="mobile-break"/>強化を組み合わせる。</h4></div><span class="system-label">１回の遠征で育てる</span></div>
+<ol class="route-flow"><li><span>01 / ROUTE</span><strong>進路を選ぶ</strong><p>戦闘・工房・修理など、分岐する作戦ルートを進む。</p></li><li><span>02 / COMBAT</span><strong>戦って回収</strong><p>狙って撃ち、ダッシュで避けながら、強化に使う通貨を得る。</p></li><li><span>03 / BUILD</span><strong>強化を選ぶ</strong><p>機体に合う強化を重ね、進化や修理との配分を考える。</p></li><li><span>04 / BOSS</span><strong>ボスに挑む</strong><p>遠征中につくったビルドで、最深部のボス撃破を目指す。</p></li></ol>
+<div class="loadout" data-loadout=""><div class="loadout-heading"><p class="eyebrow">３つの戦闘スタイル</p><p>戦い方を選ぶと、強化の選び方も変わる。</p></div>
+<div aria-label="戦車の戦闘スタイル" class="loadout-tabs" data-loadout-tabs="" hidden="" role="tablist"><button aria-controls="panel-shooter" aria-selected="true" id="tab-shooter" role="tab" tabindex="0" type="button"><span aria-hidden="true">01</span> シューター</button><button aria-controls="panel-drone" aria-selected="false" id="tab-drone" role="tab" tabindex="-1" type="button"><span aria-hidden="true">02</span> ドローン</button><button aria-controls="panel-melee" aria-selected="false" id="tab-melee" role="tab" tabindex="-1" type="button"><span aria-hidden="true">03</span> 近接</button></div>
+<section class="loadout-panel" data-loadout-panel="" id="panel-shooter"><div aria-hidden="true" class="loadout-word">SHOOTER</div><div><h5>照準方向へ、主砲で射撃。</h5><p>マウスで狙い、主砲を撃つ戦闘スタイル。追尾・壁反射・貫通などの強化を組み合わせます。</p><p class="upgrade-note"><span>強化の例</span>追尾 / 壁反射 / 敵の貫通</p></div></section>
+<section class="loadout-panel" data-loadout-panel="" id="panel-drone"><div aria-hidden="true" class="loadout-word">DRONE</div><div><h5>追従するドローンから射撃。</h5><p>自機に追従する支援機と戦うスタイル。支援機の追加、集中射撃、迎撃弾などの強化があります。</p><p class="upgrade-note"><span>強化の例</span>支援機追加 / 集中射撃 / 迎撃弾</p></div></section>
+<section class="loadout-panel" data-loadout-panel="" id="panel-melee"><div aria-hidden="true" class="loadout-word">MELEE</div><div><h5>３段の斬撃コンボで攻める。</h5><p>接近して斬撃をつなぐ戦闘スタイル。間合いや連撃速度、３段目の威力などを強化できます。</p><p class="upgrade-note"><span>強化の例</span>間合い / 連撃速度 / ３段目の威力</p></div></section>
+<p class="loadout-note">ここはゲームの仕組みを紹介する切り替え表示です。ブラウザー上で遊べるゲームではありません。</p></div>
+<details class="game-controls"><summary>操作・成長のルール <span aria-hidden="true">＋</span></summary><div class="controls-content"><dl><div><dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>移動</dd></div><div><dt>マウス / 左クリック</dt><dd>照準 / 攻撃</dd></div><div><dt>右クリック</dt><dd>スタミナを使うダッシュ</dd></div><div><dt><kbd>Esc</kbd></dt><dd>ポーズ / 情報画面を閉じる</dd></div></dl><p>通貨・強化は遠征ごとの成長です。次の遠征へ持ち越す永続強化ではありません。操作や仕様は現在のREADMEを基準にしています。</p><a class="text-link" href="https://github.com/MinaWoMinasai/tatakau-sensha#readme" rel="noopener noreferrer" target="_blank">最新の操作・仕様を読む <span aria-hidden="true">↗</span></a></div></details>
+</section></article>
 <article aria-labelledby="resonance-title" class="project team-project">
 <div class="team-visual">
 <a aria-label="Resonanceのゲーム画面を拡大" class="gallery-main" data-caption="Resonance：カード選択と戦闘演出（提出資料より）" data-lightbox="" href="assets/images/resonance-cards.webp">
@@ -119,10 +123,10 @@
 <section aria-labelledby="engineering-title" class="engineering-section" id="engineering">
 <div class="container">
 <div class="section-heading">
-<div><p class="eyebrow">02 / BEHIND THE GAME</p><h2 id="engineering-title">技術を、遊びにつなぐ。</h2></div>
+<div><p class="eyebrow">02 / BEHIND THE GAME</p><h2 id="engineering-title">技術と工夫</h2></div>
 <p>何を実装したかだけでなく、<br/>ゲームの中でどう使うか。</p>
-</div><div class="design-intent"><p class="eyebrow">MY APPROACH</p><p>技術を動かして満足するのではなく、ゲームの中でどう役立つかまで考えたい。<br class="desktop-break"/>見た目の印象とともに、敵弾や攻撃予告の読みやすさ、操作の邪魔にならないことを大切にしています。</p></div>
-<article aria-labelledby="neon-gameplay-title" class="tech-row neon-gameplay-row">
+</div><div class="design-intent"><p class="eyebrow">MY APPROACH</p><p>技術を動かして満足するのではなく、ゲームの中でどう役立つかまで考えたい。<br class="desktop-break"/>見た目の印象とともに、敵弾や攻撃予告の読みやすさ、操作の邪魔にならないことを大切にしています。</p></div><nav aria-label="技術説明の目次" class="tech-index"><a href="#neon-gameplay">01 <span>3Dボス</span> ↘</a><a href="#rendering">02 <span>ブルーム</span> ↘</a><a href="#tools">03 <span>調整ツール</span> ↘</a></nav>
+<article aria-labelledby="neon-gameplay-title" class="tech-row neon-gameplay-row" id="neon-gameplay">
 <div class="tech-copy">
 <span aria-hidden="true" class="tech-number">01</span><p class="eyebrow">RENDERING → GAMEPLAY</p>
 <h3 id="neon-gameplay-title">光るモデルを、<br/>戦うボスに。</h3>
@@ -130,14 +134,14 @@
 <p>戦闘判定は従来の2D処理を基準に残し、描画側から戦闘状態を書き換えない構成にしています。見た目と戦闘処理を分離し、表示の追加がゲームのルールまで変えてしまわないようにしました。</p>
 <div class="tech-tags"><span>3Dネオン描画</span><span>状態連携</span><span>Directional Dissolve</span></div>
 <a aria-label="3Dネオンボスの実装記録（GitHub、新しいタブで開く）" class="text-link source-link" href="https://github.com/MinaWoMinasai/tatakau-sensha/blob/master/docs/neon-boss-gameplay-integration.md" rel="noopener noreferrer" target="_blank">本編統合の記録へ <span aria-hidden="true">↗</span></a>
-</div>
+<p class="decision-line"><strong>設計上の判断</strong>見た目の変更と、戦闘のルールを切り離す。表示を足しても判定の基準を変えない構成にしました。</p></div>
 <div class="gameplay-proof">
 <p class="eyebrow">PRESERVE THE GAMEPLAY</p>
 <h4>見た目は変える。<br/>判定の基準は守る。</h4>
 <dl class="proof-list"><div><dt>01 / 戦闘</dt><dd>既存の2D戦闘が、位置・HP・行動を管理。</dd></div><div><dt>02 / 表示</dt><dd>戦闘状態を一方向に受け取り、3Dモデルの姿勢・発光へ反映。</dd></div><div><dt>03 / 撃破</dt><dd>死亡確定後は戦闘を停止。見た目はディゾルブで消失。</dd></div></dl>
 <p class="proof-caveat">この構造の説明と、「弾や予告が実際に読みやすいか」という視認性の評価は分けて考えます。</p>
 <p class="model-credit">使用3Dモデル：VRoid Project / AvatarSample_B。モデル制作そのものではなく、描画・状態連携・本編への組み込みを紹介しています。</p>
-</div></article><article aria-labelledby="rendering-title" class="tech-row">
+</div></article><article aria-labelledby="rendering-title" class="tech-row" id="rendering">
 <div class="tech-copy">
 <span aria-hidden="true" class="tech-number">02</span>
 <p class="eyebrow">RENDERING</p>
@@ -145,7 +149,7 @@
 <p>明るい成分を抽出してぼかし、元の画面に重ねるブルームを実装。輪郭や弾の発光で、ネオンの印象をつくっています。</p>
 <div class="tech-tags"><span>ポストエフェクト</span><span>ブルーム</span></div>
 <a aria-label="エンジンの実装を見る（GitHub、新しいタブで開く）" class="text-link source-link" href="https://github.com/MinaWoMinasai/tatakau-sensha/tree/master/project/DirectX/engine" rel="noopener noreferrer" target="_blank">エンジンの実装へ <span aria-hidden="true">↗</span></a>
-</div>
+<p class="decision-line"><strong>今後も確かめたいこと</strong>発光の印象だけでなく、実際の戦闘で敵弾や攻撃予告を見失わないかを調整・確認していきます。</p></div>
 <figure class="comparison">
 <div class="comparison-images">
 <div><span class="image-label">BEFORE</span><a aria-label="ブルーム追加前の比較用画像を拡大" data-caption="ブルームの比較用画像：Before（提出資料より）" data-lightbox="" href="assets/images/bloom-before.webp"><img alt="発光が控えめな細い輪郭と弾を描画した初期の比較用画面" height="298" loading="lazy" src="assets/images/bloom-before.webp" width="531"/></a></div>
@@ -155,7 +159,7 @@
 <div aria-label="ブルームの処理の概要" class="method-strip"><span>明るい成分を抽出</span><span aria-hidden="true">→</span><span>ぼかす</span><span aria-hidden="true">→</span><span>元画像へ合成</span></div>
 </figure>
 </article>
-<article aria-labelledby="tools-title" class="tech-row tools-row">
+<article aria-labelledby="tools-title" class="tech-row tools-row" id="tools">
 <div class="tech-copy">
 <span aria-hidden="true" class="tech-number">03</span>
 <p class="eyebrow">DEVELOPMENT TOOLS</p>
@@ -163,7 +167,7 @@
 <p>武器・発光・敵・HUDなどの値をImGuiで変更し、JSONへ保存・読み込み。調整のたびにコードを書き換えて再ビルドする手間を減らす仕組みです。</p>
 <div class="tech-tags"><span>ImGui</span><span>JSON</span><span>パラメーター調整</span></div>
 <a aria-label="調整ツールの実装を見る（GitHub、新しいタブで開く）" class="text-link source-link" href="https://github.com/MinaWoMinasai/tatakau-sensha/tree/master/project/game/editor" rel="noopener noreferrer" target="_blank">調整ツールの実装へ <span aria-hidden="true">↗</span></a>
-</div>
+<p class="decision-line"><strong>ゲームで生かすために</strong>コードの実装だけで終わらず、動かした状態で値を変え、保存できる調整環境を用意しています。</p></div>
 <figure class="tools-figure">
 <a aria-label="ImGuiによる調整画面を拡大" class="gallery-main" data-caption="ImGuiによるパラメーター調整（過去の提出資料より）" data-lightbox="" href="assets/images/tank-tools.webp"><img alt="ゲームを表示したまま、ImGuiのウィンドウで値を変更する調整画面" height="392" loading="lazy" src="assets/images/tank-tools.webp" width="690"/><span aria-hidden="true" class="image-action">拡大 ↗</span></a>
 <figcaption>過去の提出資料に収録した開発ツールの画面。</figcaption>
@@ -172,20 +176,21 @@
 <div class="implementation-note"><span class="mono">READ THE SOURCE</span><p>ゲームの仕様・操作・実装の読み方は、公開リポジトリにまとめています。</p><a aria-label="READMEを読む（GitHub、新しいタブで開く）" class="text-link" href="https://github.com/MinaWoMinasai/tatakau-sensha#readme" rel="noopener noreferrer" target="_blank">READMEを読む <span aria-hidden="true">↗</span></a></div>
 </div>
 </section>
-<section aria-labelledby="about-title" class="section container about-section" id="about">
-<div class="about-heading"><p class="eyebrow">03 / ABOUT</p><h2 id="about-title">つくる人。</h2><div aria-hidden="true" class="about-monogram">M<span>／</span></div></div>
+<section aria-labelledby="approach-title" class="approach-section container" id="approach"><div class="section-heading"><div><p class="eyebrow">03 / MY APPROACH</p><h2 id="approach-title">制作で大切にしていること</h2></div></div><div class="approach-layout"><div class="approach-statement"><span aria-hidden="true" class="quote-mark">“</span><p>技術や見た目だけで<br/>満足せず、<br/><strong>ゲームの中で<br/>生かしたい。</strong></p><span class="approach-author">堀毛 翔斗 / 制作方針</span></div><div class="approach-notes"><article><span class="note-number">01</span><div><h3>表現には、ゲームでの役割を。</h3><p>3Dモデルをネオンで描画するだけでなく、攻撃の予告や撃破後の消失など、戦闘の流れにつなげることに取り組んでいます。</p></div></article><article><span class="note-number">02</span><div><h3>派手さと、遊びやすさを一緒に。</h3><p>立体感や迫力は出したい。でも、弾や攻撃予告、プレイヤーの操作の邪魔にはしたくない。その両立を目指しています。</p></div></article><article><span class="note-number">03</span><div><h3>つくって、動かして、調整する。</h3><p>実装した機能はゲームの中で確認し、見た目や数値を調整する。このサイトも、実機の記録と制作時の判断を加えながら更新していきます。</p></div></article></div></div><details class="site-design-note"><summary>このサイトにも反映したこと <span aria-hidden="true">＋</span></summary><p>作品のネオンの雰囲気を枠や背景に取り入れ、本文は光らせず読みやすさを優先しています。作品・技術・制作方針へ直接移動できる構成にし、ゲームの説明と実装の説明を分けました。</p><p>AIを初期構成と実装の補助に使い、作者が装飾の方向と「技術をゲームに生かす」という制作方針を選んでいます。掲載文章と画像は継続して見直しています。</p></details></section><section aria-labelledby="about-title" class="section container about-section" id="about">
+<div class="about-heading"><p class="eyebrow">04 / ABOUT</p><h2 id="about-title">プロフィール</h2><div aria-hidden="true" class="about-monogram">H<span>／</span></div></div>
 <div class="about-copy">
-<!-- EDIT 4: 表示名・自己紹介。学年・卒業年・本名・メールは確認するまで追加しません。 -->
-<p class="eyebrow">GAME PROGRAMMING STUDENT</p>
-<h3>MinaWoMinasai</h3>
+<!-- 表示名は本名を使用。GitHub上のユーザー名はMinaWoMinasaiです。 -->
+<p class="eyebrow">HORIKE HAYATO / GAME PROGRAMMING STUDENT</p>
+<h3>堀毛 翔斗</h3>
+<p class="name-reading">ホリケ ハヤト / Horike Hayato</p>
 <p>C++ / DirectX 12を中心に、個人制作とチーム制作に取り組んでいます。ゲームの仕組みから描画表現、制作中の調整ツールまで、動かして確かめながら制作しています。</p>
-<dl class="about-facts"><div><dt>制作分野</dt><dd>ゲームプログラミング / 描画 / ツール</dd></div><div><dt>使用技術</dt><dd>C++ / DirectX 12 / HLSL / ImGui / Git</dd></div></dl>
+<dl class="about-facts"><div><dt>制作分野</dt><dd>ゲームプログラミング / 描画 / ツール</dd></div><div><dt>使用技術</dt><dd>C++ / DirectX 12 / HLSL / ImGui / Git</dd></div><div><dt>GitHub</dt><dd>MinaWoMinasai</dd></div></dl>
 <a aria-label="GitHubで制作物を見る（新しいタブで開く）" class="button button-outline" href="https://github.com/MinaWoMinasai" rel="noopener noreferrer" target="_blank">GitHubで制作物を見る <span aria-hidden="true">↗</span></a>
 </div>
 </section>
 </main>
 <footer class="site-footer">
-<div class="container footer-inner"><p>© 2026 MinaWoMinasai <span>GAME PROGRAMMING PORTFOLIO</span></p><a class="text-link" href="#top">先頭へ <span aria-hidden="true">↑</span></a></div>
+<div class="container footer-inner"><p>© 2026 Horike Hayato <span>GAME PROGRAMMING PORTFOLIO</span></p><a class="text-link" href="#top">先頭へ <span aria-hidden="true">↑</span></a><button aria-pressed="false" class="glow-toggle" hidden="" type="button">装飾の発光を控えめに</button></div>
 <div class="container provenance"><details><summary>掲載情報と画像について</summary><p>「たたかうせんしゃ」のゲーム概要は公開リポジトリのREADME、画像・Resonanceの担当範囲は過去の提出資料をもとにしています。画像は開発中の記録で、現在の仕様と異なる場合があります。チーム作品の説明は担当箇所を区別しています。外部ライブラリや第三者素材は自作部分に含めません。</p></details></div>
 </footer>
 <dialog aria-labelledby="dialog-caption" class="lightbox" id="image-dialog">
@@ -195,4 +200,3 @@
 </dialog>
 </body>
 </html>
-
