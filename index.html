@@ -1,201 +1,558 @@
 <!DOCTYPE html>
-
-<html data-neon="balanced" data-revision="20261006-a" lang="ja">
-<head><!-- 装飾はB案を採用。見出しは仮案。最新3D画像の選定・公開はまだ行っていません。 -->
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<!-- EDIT 1: 公開する表示名。GitHubのリンク先とは別に変更してください。 -->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>堀毛 翔斗 | Game Programming Portfolio</title>
-<meta content="堀毛 翔斗（Horike Hayato）のゲーム制作ポートフォリオ。C++ / DirectX 12で制作した「たたかうせんしゃ」の遊び方、3Dネオンと戦闘処理の連携、制作で大切にしていることを紹介します。" name="description"/>
-<meta content="#090f16" name="theme-color"/>
-<meta content="堀毛 翔斗 | Game Programming Portfolio" property="og:title"/>
-<meta content="つくった技術を、ゲームの中へ。C++ / DirectX 12によるゲーム制作と、描画表現を遊びにつなぐ取り組み。" property="og:description"/>
-<meta content="website" property="og:type"/>
-
-<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090f16'/%3E%3Cpath d='M18 16v32M46 16v32M18 32h28' fill='none' stroke='%2383f5d0' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E" rel="icon"/>
-<link href="assets/css/style.css" rel="stylesheet"/>
-<script defer="" src="assets/js/site.js"></script>
-<link href="assets/css/neon.css" rel="stylesheet"/><link href="portfolio-refresh.css?v=20261006a" rel="stylesheet"/><script defer="" src="portfolio-refresh.js?v=20261006a"></script><link href="https://minawominasai.github.io/portfolio/" rel="canonical"/><meta content="https://minawominasai.github.io/portfolio/" property="og:url"/></head>
+<meta name="description" content="堀毛 翔斗（Horike Hayato）のゲーム制作ポートフォリオ。C++ / DirectX 12の自作エンジンで制作したネオン調ローグライトアクション「たたかうせんしゃ」の遊び・描画技術・今後の課題を紹介します。">
+<meta name="theme-color" content="#080a16">
+<meta property="og:title" content="堀毛 翔斗 | Game Programming Portfolio">
+<meta property="og:description" content="暗い画面に光る線、にじむ光。好きな表現を、シェーダーから自作エンジンでゲームにしました。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://minawominasai.github.io/portfolio/">
+<meta property="og:image" content="https://minawominasai.github.io/portfolio/assets/media/boss-battle.webp">
+<link rel="canonical" href="https://minawominasai.github.io/portfolio/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080a16'/%3E%3Crect x='9' y='9' width='46' height='46' rx='9' fill='none' stroke='%2322d3ee' stroke-width='4'/%3E%3Cpath d='M23 20v24M41 20v24M23 32h18' fill='none' stroke='%23f0479f' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=20261110">
+<script defer src="assets/js/site.js?v=20261110"></script>
+</head>
 <body id="top">
 <a class="skip-link" href="#main">本文へ移動</a>
+
 <header class="site-header">
-<div class="container header-inner">
-<a aria-label="堀毛 翔斗 ポートフォリオの先頭へ" class="brand" href="#top">
-<span aria-hidden="true" class="brand-mark">H<span>／</span></span>
-<span class="brand-name">堀毛 翔斗<span>HORIKE HAYATO / GAME PROGRAMMING</span></span>
-</a>
-<nav aria-label="メインナビゲーション" class="main-nav"><a href="#projects">作品</a><a href="#engineering">技術と工夫</a><a href="#approach">制作方針</a><a href="#about">プロフィール</a></nav>
-<a aria-label="GitHubプロフィール（新しいタブで開く）" class="header-github" href="https://github.com/MinaWoMinasai" rel="noopener noreferrer" target="_blank">GitHub <span aria-hidden="true">↗</span></a>
-</div>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="ページの先頭へ">
+      <span class="brand-mark" aria-hidden="true">H</span>
+      <span class="brand-name">堀毛 翔斗<small>HORIKE HAYATO</small></span>
+    </a>
+    <nav class="main-nav" aria-label="メインナビゲーション">
+      <a href="#why">作った理由</a>
+      <a href="#gameplay">ゲーム</a>
+      <a href="#tech">技術</a>
+      <a href="#next">課題と次</a>
+      <a href="#team">チーム制作</a>
+      <a href="#about">プロフィール</a>
+    </nav>
+    <a class="header-github" href="https://github.com/MinaWoMinasai" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+  </div>
 </header>
+
 <main id="main">
-<div class="hero-stage"><section aria-labelledby="hero-title" class="hero container">
-<div class="hero-copy">
-<p class="eyebrow"><span aria-hidden="true" class="tiny-line"></span> C++ / DIRECTX 12 · GAME DEVELOPMENT</p>
-<!-- EDIT 2: 自分が最も伝えたいことに合わせて、見出しと導入文を仕上げてください。 -->
-<!-- 見出し未確定: 「つくった技術を、ゲームの中へ。」は仮案。変更時はog:descriptionも見直してください。 --><h1 id="hero-title">つくった技術を、<br/><span>ゲームの中へ。</span></h1>
-<p class="hero-lead">ネオンの見た目だけで、終わらせない。<br/>戦い方・見やすさ・調整のしやすさまで考える、<br class="desktop-break"/>ゲーム制作のポートフォリオです。</p>
-<div class="button-row">
-<a class="button button-primary" href="#projects">作品をみる <span aria-hidden="true">↘</span></a>
-<a class="text-link" href="#engineering">実装の工夫へ <span aria-hidden="true">→</span></a>
-</div><p class="hero-signature"><span aria-hidden="true">＋</span><span>個人制作 <strong>たたかうせんしゃ</strong><br/>ゲームプレイ / 描画 / 制作ツール</span></p>
-</div>
-<figure class="hero-visual">
-<div class="visual-topline"><span><i aria-hidden="true"></i> TATAKAU SENSHA</span><span>DEVELOPMENT CAPTURE</span></div>
-<!-- EDIT HERO: メイン画像は hero-main.webp。独立して差し替え可能。画像を変えたらsrc/alt/width/heightとfigcaption、注記も更新してください。拡張子を変えるだけでは画像形式は変換されません。 --><a aria-label="たたかうせんしゃの紹介へ" class="hero-image-link" href="#tatakau-sensha">
-<img alt="黒いフィールドで、ネオンに光る戦車と図形の敵が戦う『たたかうせんしゃ』の開発中の画面" fetchpriority="high" height="720" src="assets/images/hero-main.webp" width="1280"/>
-<span aria-hidden="true" class="visual-arrow">↗</span>
-</a>
-<figcaption class="visual-caption"><div><strong>たたかうせんしゃ</strong><span>ROGUELITE / ACTION</span></div><span class="small-label">過去の開発画面</span></figcaption>
-<p class="hero-media-note">実機の開発記録。掲載画面は過去のバージョンです。</p></figure>
-</section></div>
-<nav aria-label="見たい内容から移動" class="site-map container"><a href="#tatakau-sensha"><span class="map-number">01</span><span><strong>どんなゲーム？</strong><small>代表作・遊び方・操作</small></span><span aria-hidden="true" class="map-arrow">↘</span></a><a href="#engineering"><span class="map-number">02</span><span><strong>どう作った？</strong><small>描画・戦闘連携・調整ツール</small></span><span aria-hidden="true" class="map-arrow">↘</span></a><a href="#approach"><span class="map-number">03</span><span><strong>何を大切に？</strong><small>制作の考え方・今後の改善</small></span><span aria-hidden="true" class="map-arrow">↘</span></a></nav>
-<section aria-labelledby="projects-title" class="section container" id="projects">
-<div class="section-heading">
-<div><p class="eyebrow">01 / SELECTED WORK</p><h2 id="projects-title">制作作品</h2></div>
-<p>個人制作とチーム制作から、<br/>担当したことが伝わる作品を掲載しています。</p>
-</div>
-<!-- EDIT 3: 最新の画像はassets/images内の同名ファイルを置き換えて差し替えられます。 -->
-<article aria-labelledby="tank-title" class="project featured-project" id="tatakau-sensha">
-<div class="project-visual">
-<div class="gallery" data-gallery="">
-<a aria-label="戦闘画面を拡大" class="gallery-main" data-caption="たたかうせんしゃ：戦闘画面（過去の提出資料より）" data-lightbox="" href="assets/images/tank-combat.webp">
-<img alt="ネオンに光る敵や弾が並ぶ、たたかうせんしゃの戦闘画面" height="720" loading="lazy" src="assets/images/tank-combat.webp" width="1280"/>
-<span aria-hidden="true" class="image-action">拡大 ↗</span>
-</a>
-<div aria-label="表示するゲーム画面を選択" class="gallery-choices" hidden="">
-<button aria-pressed="true" class="gallery-choice" data-alt="ネオンに光る敵や弾が並ぶ、たたかうせんしゃの戦闘画面" data-caption="たたかうせんしゃ：戦闘画面（過去の提出資料より）" data-src="assets/images/tank-combat.webp" type="button">01 戦闘</button>
-<button aria-pressed="false" class="gallery-choice" data-alt="戦車の周囲に弾とエフェクトが広がる、たたかうせんしゃの画面" data-caption="たたかうせんしゃ：アクションの画面（過去の提出資料より）" data-src="assets/images/tank-action.webp" type="button">02 アクション</button>
-<button aria-pressed="false" class="gallery-choice" data-alt="ゲーム画面の上にImGuiのパラメーター調整パネルを表示した開発画面" data-caption="たたかうせんしゃ：ゲーム内の調整ツール（過去の提出資料より）" data-src="assets/images/tank-tools.webp" type="button">03 調整ツール</button>
-</div>
-<p aria-live="polite" class="sr-only" data-gallery-status=""></p>
-</div>
-<p class="media-note">画像は過去の提出資料に収録した開発中の画面です。現在の仕様と異なる場合があります。</p>
-</div>
-<div class="project-copy">
-<p class="project-kicker"><span class="tag tag-accent">個人制作</span><span class="mono">FEATURED PROJECT</span></p>
-<h3 id="tank-title">たたかうせんしゃ</h3>
-<p class="genre">見下ろし型ローグライトアクション</p>
-<p class="project-description">戦車を操り、進路と強化を選びながら最深部のボスを目指す、見下ろし型ローグライトアクション。C++ / DirectX 12の自作エンジンで制作しています。</p>
-<dl class="project-facts">
-<div><dt>制作範囲</dt><dd>個人制作 / 設計・プログラム全般</dd></div>
-<div><dt>開発環境</dt><dd>C++20 / DirectX 12 / Windows</dd></div>
-<div><dt>取り組み</dt><dd>ゲームプレイ・描画・調整ツール</dd></div>
-<div><dt>素材・基盤</dt><dd>外部ライブラリ・第三者素材を利用。出典と自作範囲は区別して記載。</dd></div></dl>
-<div class="button-row project-buttons">
-<a class="button button-primary" href="#engineering">技術と工夫を読む <span aria-hidden="true">↓</span></a>
-<a aria-label="たたかうせんしゃのソースコード（GitHub、新しいタブで開く）" class="text-link" href="https://github.com/MinaWoMinasai/tatakau-sensha" rel="noopener noreferrer" target="_blank">ソースコード <span aria-hidden="true">↗</span></a>
-</div>
-</div>
-<section aria-labelledby="playbook-title" class="playbook">
-<div class="playbook-heading"><div><p class="eyebrow">GAMEPLAY / 遊びの流れ</p><h4 id="playbook-title">進路を選ぶ。戦う。<br class="mobile-break"/>強化を組み合わせる。</h4></div><span class="system-label">１回の遠征で育てる</span></div>
-<ol class="route-flow"><li><span>01 / ROUTE</span><strong>進路を選ぶ</strong><p>戦闘・工房・修理など、分岐する作戦ルートを進む。</p></li><li><span>02 / COMBAT</span><strong>戦って回収</strong><p>狙って撃ち、ダッシュで避けながら、強化に使う通貨を得る。</p></li><li><span>03 / BUILD</span><strong>強化を選ぶ</strong><p>機体に合う強化を重ね、進化や修理との配分を考える。</p></li><li><span>04 / BOSS</span><strong>ボスに挑む</strong><p>遠征中につくったビルドで、最深部のボス撃破を目指す。</p></li></ol>
-<div class="loadout" data-loadout=""><div class="loadout-heading"><p class="eyebrow">３つの戦闘スタイル</p><p>戦い方を選ぶと、強化の選び方も変わる。</p></div>
-<div aria-label="戦車の戦闘スタイル" class="loadout-tabs" data-loadout-tabs="" hidden="" role="tablist"><button aria-controls="panel-shooter" aria-selected="true" id="tab-shooter" role="tab" tabindex="0" type="button"><span aria-hidden="true">01</span> シューター</button><button aria-controls="panel-drone" aria-selected="false" id="tab-drone" role="tab" tabindex="-1" type="button"><span aria-hidden="true">02</span> ドローン</button><button aria-controls="panel-melee" aria-selected="false" id="tab-melee" role="tab" tabindex="-1" type="button"><span aria-hidden="true">03</span> 近接</button></div>
-<section class="loadout-panel" data-loadout-panel="" id="panel-shooter"><div aria-hidden="true" class="loadout-word">SHOOTER</div><div><h5>照準方向へ、主砲で射撃。</h5><p>マウスで狙い、主砲を撃つ戦闘スタイル。追尾・壁反射・貫通などの強化を組み合わせます。</p><p class="upgrade-note"><span>強化の例</span>追尾 / 壁反射 / 敵の貫通</p></div></section>
-<section class="loadout-panel" data-loadout-panel="" id="panel-drone"><div aria-hidden="true" class="loadout-word">DRONE</div><div><h5>追従するドローンから射撃。</h5><p>自機に追従する支援機と戦うスタイル。支援機の追加、集中射撃、迎撃弾などの強化があります。</p><p class="upgrade-note"><span>強化の例</span>支援機追加 / 集中射撃 / 迎撃弾</p></div></section>
-<section class="loadout-panel" data-loadout-panel="" id="panel-melee"><div aria-hidden="true" class="loadout-word">MELEE</div><div><h5>３段の斬撃コンボで攻める。</h5><p>接近して斬撃をつなぐ戦闘スタイル。間合いや連撃速度、３段目の威力などを強化できます。</p><p class="upgrade-note"><span>強化の例</span>間合い / 連撃速度 / ３段目の威力</p></div></section>
-<p class="loadout-note">ここはゲームの仕組みを紹介する切り替え表示です。ブラウザー上で遊べるゲームではありません。</p></div>
-<details class="game-controls"><summary>操作・成長のルール <span aria-hidden="true">＋</span></summary><div class="controls-content"><dl><div><dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>移動</dd></div><div><dt>マウス / 左クリック</dt><dd>照準 / 攻撃</dd></div><div><dt>右クリック</dt><dd>スタミナを使うダッシュ</dd></div><div><dt><kbd>Esc</kbd></dt><dd>ポーズ / 情報画面を閉じる</dd></div></dl><p>通貨・強化は遠征ごとの成長です。次の遠征へ持ち越す永続強化ではありません。操作や仕様は現在のREADMEを基準にしています。</p></div></details>
-</section></article>
-<article aria-labelledby="resonance-title" class="project team-project">
-<div class="team-visual">
-<a aria-label="Resonanceのゲーム画面を拡大" class="gallery-main" data-caption="Resonance：カード選択と戦闘演出（提出資料より）" data-lightbox="" href="assets/images/resonance-cards.webp">
-<img alt="手前にカードの手札が並び、奥のフィールドでキャラクターが戦うResonanceの画面" height="894" loading="lazy" src="assets/images/resonance-cards.webp" width="1598"/>
-<span aria-hidden="true" class="image-action">拡大 ↗</span>
-</a>
-</div>
-<div class="team-copy">
-<p class="project-kicker"><span class="tag">チーム制作 / ４人</span><span class="mono">02 / TEAM PROJECT</span></p>
-<h3 id="resonance-title">Resonance</h3>
-<p class="project-description">カードで戦い、場に残ったカードでポーカーの役をそろえるカードバトル。チームの中で、GPUパーティクルとポストエフェクトを担当しました。</p>
-<p class="team-facts"><strong>担当</strong> GPUパーティクル・ポストエフェクト<br/><strong>環境</strong> 自作エンジン / DirectX 12</p>
-<details class="team-details">
-<summary>担当した演出の画面を見る <span aria-hidden="true">＋</span></summary>
-<div class="details-inner">
-<a aria-label="Resonanceの攻撃エフェクトを拡大" class="gallery-main" data-caption="Resonance：攻撃エフェクトの画面（提出資料より）" data-lightbox="" href="assets/images/resonance-effects.webp"><img alt="Resonanceの戦闘フィールドで炎のエフェクトを表示した場面" height="894" loading="lazy" src="assets/images/resonance-effects.webp" width="1598"/></a>
-<p>ゲーム全体はチーム制作です。ここでは自分の担当であるGPUパーティクルとポストエフェクトに関連する画面を掲載しています。</p>
-</div>
-</details>
-</div>
-</article>
-</section>
-<section aria-labelledby="engineering-title" class="engineering-section" id="engineering">
-<div class="container">
-<div class="section-heading">
-<div><p class="eyebrow">02 / BEHIND THE GAME</p><h2 id="engineering-title">技術と工夫</h2></div>
-<p>何を実装したかだけでなく、<br/>ゲームの中でどう使うか。</p>
-</div><div class="design-intent"><p class="eyebrow">MY APPROACH</p><p>技術を動かして満足するのではなく、ゲームの中でどう役立つかまで考えたい。<br class="desktop-break"/>見た目の印象とともに、敵弾や攻撃予告の読みやすさ、操作の邪魔にならないことを大切にしています。</p></div><nav aria-label="技術説明の目次" class="tech-index"><a href="#neon-gameplay">01 <span>3Dボス</span> ↘</a><a href="#rendering">02 <span>ブルーム</span> ↘</a><a href="#tools">03 <span>調整ツール</span> ↘</a></nav>
-<article aria-labelledby="neon-gameplay-title" class="tech-row neon-gameplay-row" id="neon-gameplay">
-<div class="tech-copy">
-<span aria-hidden="true" class="tech-number">01</span><p class="eyebrow">RENDERING → GAMEPLAY</p>
-<h3 id="neon-gameplay-title">光るモデルを、<br/>戦うボスに。</h3>
-<p>3Dネオン表示を、プレビューだけでなく本編のボスに組み込みました。戦闘側の位置・照準・HP・行動状態を表示側へ渡し、攻撃の予告や撃破後の消失を連動させています。</p>
-<p>戦闘判定は従来の2D処理を基準に残し、描画側から戦闘状態を書き換えない構成にしています。見た目と戦闘処理を分離し、表示の追加がゲームのルールまで変えてしまわないようにしました。</p>
-<div class="tech-tags"><span>3Dネオン描画</span><span>状態連携</span><span>Directional Dissolve</span></div>
-<a aria-label="3Dネオンボスの実装記録（GitHub、新しいタブで開く）" class="text-link source-link" href="https://github.com/MinaWoMinasai/tatakau-sensha/blob/master/docs/neon-boss-gameplay-integration.md" rel="noopener noreferrer" target="_blank">本編統合の記録へ <span aria-hidden="true">↗</span></a>
-<p class="decision-line"><strong>設計上の判断</strong>見た目の変更と、戦闘のルールを切り離す。表示を足しても判定の基準を変えない構成にしました。</p></div>
-<div class="gameplay-proof">
-<p class="eyebrow">PRESERVE THE GAMEPLAY</p>
-<h4>見た目は変える。<br/>判定の基準は守る。</h4>
-<dl class="proof-list"><div><dt>01 / 戦闘</dt><dd>既存の2D戦闘が、位置・HP・行動を管理。</dd></div><div><dt>02 / 表示</dt><dd>戦闘状態を一方向に受け取り、3Dモデルの姿勢・発光へ反映。</dd></div><div><dt>03 / 撃破</dt><dd>死亡確定後は戦闘を停止。見た目はディゾルブで消失。</dd></div></dl>
-<p class="proof-caveat">この構造の説明と、「弾や予告が実際に読みやすいか」という視認性の評価は分けて考えます。</p>
-<p class="model-credit">使用3Dモデル：VRoid Project / AvatarSample_B。モデル制作そのものではなく、描画・状態連携・本編への組み込みを紹介しています。</p>
-</div></article><article aria-labelledby="rendering-title" class="tech-row" id="rendering">
-<div class="tech-copy">
-<span aria-hidden="true" class="tech-number">02</span>
-<p class="eyebrow">RENDERING</p>
-<h3 id="rendering-title">光のにじみで、<br/>ネオンを表現する。</h3>
-<p>明るい成分を抽出してぼかし、元の画面に重ねるブルームを実装。輪郭や弾の発光で、ネオンの印象をつくっています。</p>
-<div class="tech-tags"><span>ポストエフェクト</span><span>ブルーム</span></div>
-<a aria-label="エンジンの実装を見る（GitHub、新しいタブで開く）" class="text-link source-link" href="https://github.com/MinaWoMinasai/tatakau-sensha/tree/master/project/DirectX/engine" rel="noopener noreferrer" target="_blank">エンジンの実装へ <span aria-hidden="true">↗</span></a>
-<p class="decision-line"><strong>今後も確かめたいこと</strong>発光の印象だけでなく、実際の戦闘で敵弾や攻撃予告を見失わないかを調整・確認していきます。</p></div>
-<figure class="comparison">
-<div class="comparison-images">
-<div><span class="image-label">BEFORE</span><a aria-label="ブルーム追加前の比較用画像を拡大" data-caption="ブルームの比較用画像：Before（提出資料より）" data-lightbox="" href="assets/images/bloom-before.webp"><img alt="発光が控えめな細い輪郭と弾を描画した初期の比較用画面" height="298" loading="lazy" src="assets/images/bloom-before.webp" width="531"/></a></div>
-<div><span class="image-label image-label-accent">AFTER</span><a aria-label="ブルーム追加後の比較用画像を拡大" data-caption="ブルームの比較用画像：After（提出資料より）" data-lightbox="" href="assets/images/bloom-after.webp"><img alt="輪郭や弾の周囲に光がにじむブルームを加えた初期の比較用画面" height="283" loading="lazy" src="assets/images/bloom-after.webp" width="517"/></a></div>
-</div>
-<figcaption>初期の実装比較記録。別場面の画像のため、同一フレーム・同一条件の比較ではありません。</figcaption>
-<div aria-label="ブルームの処理の概要" class="method-strip"><span>明るい成分を抽出</span><span aria-hidden="true">→</span><span>ぼかす</span><span aria-hidden="true">→</span><span>元画像へ合成</span></div>
-</figure>
-</article>
-<article aria-labelledby="tools-title" class="tech-row tools-row" id="tools">
-<div class="tech-copy">
-<span aria-hidden="true" class="tech-number">03</span>
-<p class="eyebrow">DEVELOPMENT TOOLS</p>
-<h3 id="tools-title">遊んで、変えて、<br/>すぐに確かめる。</h3>
-<p>武器・発光・敵・HUDなどの値をImGuiで変更し、JSONへ保存・読み込み。調整のたびにコードを書き換えて再ビルドする手間を減らす仕組みです。</p>
-<div class="tech-tags"><span>ImGui</span><span>JSON</span><span>パラメーター調整</span></div>
 
-<p class="decision-line"><strong>ゲームで生かすために</strong>コードの実装だけで終わらず、動かした状態で値を変え、保存できる調整環境を用意しています。</p></div>
-<figure class="tools-figure">
-<a aria-label="ImGuiによる調整画面を拡大" class="gallery-main" data-caption="ImGuiによるパラメーター調整（過去の提出資料より）" data-lightbox="" href="assets/images/tank-tools.webp"><img alt="ゲームを表示したまま、ImGuiのウィンドウで値を変更する調整画面" height="392" loading="lazy" src="assets/images/tank-tools.webp" width="690"/><span aria-hidden="true" class="image-action">拡大 ↗</span></a>
-<figcaption>過去の提出資料に収録した開発ツールの画面。</figcaption>
-</figure>
-</article>
-</div>
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker">HORIKE HAYATO — GAME PROGRAMMING PORTFOLIO</p>
+      <h1 id="hero-title"><span class="neon-text">たたかうせんしゃ</span></h1>
+      <p class="hero-lead">強化を重ねて最深部を目指す、<br>ネオン調のローグライトアクション。</p>
+      <p class="hero-sub">暗い画面に光る線、にじむ光。好きな表現を、<br class="pc">シェーダーから<strong>自作エンジン</strong>でゲームにしました。</p>
+      <ul class="chips" aria-label="制作の概要">
+        <li class="c-cyan">個人制作</li>
+        <li class="c-pink">C++20</li>
+        <li class="c-green">DirectX 12</li>
+        <li class="c-yellow">自作エンジン</li>
+      </ul>
+      <div class="button-row">
+        <a class="btn btn-primary" href="#playthrough">プレイ動画を見る <span aria-hidden="true">▶</span></a>
+        <a class="btn" href="https://github.com/MinaWoMinasai/tatakau-sensha" target="_blank" rel="noopener noreferrer">ソースコード <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <p class="media-label c-cyan"><i aria-hidden="true"></i>PLAY CAPTURE / 2026.10</p>
+      <div class="frame c-cyan">
+        <video class="lazy-video" muted loop playsinline poster="assets/media/hero-loop.webp" data-src="assets/media/hero-loop.mp4" aria-label="たたかうせんしゃの戦闘シーン。光る自機が敵とブロックを撃ち合う"></video>
+      </div>
+      <figcaption>実機の録画（2026年10月）。縦に積んだ3Dブロックの間で敵を倒し、通貨を集める。</figcaption>
+    </figure>
+  </div>
 </section>
-<section aria-labelledby="approach-title" class="approach-section container" id="approach"><div class="section-heading"><div><p class="eyebrow">03 / MY APPROACH</p><h2 id="approach-title">制作で大切にしていること</h2></div></div><div class="approach-layout"><div class="approach-statement"><span aria-hidden="true" class="quote-mark">“</span><p>技術や見た目だけで<br/>満足せず、<br/><strong>ゲームの中で<br/>生かしたい。</strong></p><span class="approach-author">堀毛 翔斗 / 制作方針</span></div><div class="approach-notes"><article><span class="note-number">01</span><div><h3>表現には、ゲームでの役割を。</h3><p>3Dモデルをネオンで描画するだけでなく、攻撃の予告や撃破後の消失など、戦闘の流れにつなげることに取り組んでいます。</p></div></article><article><span class="note-number">02</span><div><h3>派手さと、遊びやすさを一緒に。</h3><p>立体感や迫力は出したい。でも、弾や攻撃予告、プレイヤーの操作の邪魔にはしたくない。その両立を目指しています。</p></div></article><article><span class="note-number">03</span><div><h3>つくって、動かして、調整する。</h3><p>実装した機能はゲームの中で確認し、見た目や数値を調整する。このサイトも、実機の記録と制作時の判断を加えながら更新していきます。</p></div></article></div></div></section><section aria-labelledby="about-title" class="section container about-section" id="about">
-<div class="about-heading"><p class="eyebrow">04 / ABOUT</p><h2 id="about-title">プロフィール</h2><div aria-hidden="true" class="about-monogram">H<span>／</span></div></div>
-<div class="about-copy">
-<!-- 表示名は本名を使用。GitHub上のユーザー名はMinaWoMinasaiです。 -->
-<p class="eyebrow">HORIKE HAYATO / GAME PROGRAMMING STUDENT</p>
-<h3>堀毛 翔斗</h3>
-<p class="name-reading">ホリケ ハヤト / Horike Hayato</p>
-<p>C++ / DirectX 12を中心に、個人制作とチーム制作に取り組んでいます。ゲームの仕組みから描画表現、制作中の調整ツールまで、動かして確かめながら制作しています。</p>
-<dl class="about-facts"><div><dt>制作分野</dt><dd>ゲームプログラミング / 描画 / ツール</dd></div><div><dt>使用技術</dt><dd>C++ / DirectX 12 / HLSL / ImGui / Git</dd></div><div><dt>GitHub</dt><dd>MinaWoMinasai</dd></div></dl>
 
-</div>
+<!-- ============ 01 WHY ============ -->
+<section class="section" id="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="section-num">01</p>
+      <div><p class="kicker">WHY THIS GAME</p><h2 id="why-title">このゲームを作った理由</h2></div>
+    </header>
+    <div class="why-grid">
+      <div class="why-cards">
+        <article class="card c-pink">
+          <h3>ネオンの光が好き</h3>
+          <p>暗い画面に光る線だけが浮かぶ、ネオンサインのような見た目。</p>
+        </article>
+        <article class="card c-cyan">
+          <h3>光がにじむ表現が好き</h3>
+          <p>ブルームで光がふわっと広がる、あの柔らかさを自分で作りたい。</p>
+        </article>
+        <article class="card card-solid c-green">
+          <p class="card-label">だから</p>
+          <p class="big-line">暗いステージ、光る線、にじむ光。<br>「好きな表現」をそのままゲームに。</p>
+          <p class="muted">光る線が主役の画面を、シェーダーから自作エンジンで作っています。</p>
+        </article>
+      </div>
+      <figure class="why-media">
+        <a class="frame c-pink zoomable" href="assets/media/boss-battle.webp" data-lightbox data-caption="ボス戦。ピンクのネオンで描いた3Dモデルのボスと戦う">
+          <img src="assets/media/boss-battle.webp" width="1600" height="900" loading="lazy" alt="ピンクに光る格子の床の上で、3Dネオンのボスと光る自機が戦う画面">
+        </a>
+        <figcaption>ボス戦。床も壁もボスも、すべて「光る線」で描いています。</figcaption>
+      </figure>
+    </div>
+  </div>
 </section>
+
+<!-- ============ 02 RESULT ============ -->
+<section class="section section-alt" id="result" aria-labelledby="result-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="section-num">02</p>
+      <div><p class="kicker">CURRENT BUILD</p><h2 id="result-title">1本通して遊べるところまで</h2></div>
+    </header>
+
+    <figure class="digest">
+      <p class="flow-line" aria-label="遊べる範囲">
+        <span class="c-cyan">タイトル</span><b aria-hidden="true">→</b><span class="c-cyan">戦闘</span><b aria-hidden="true">→</b><span class="c-yellow">強化</span><b aria-hidden="true">→</b><span class="c-pink">ボス</span><b aria-hidden="true">→</b><span class="c-green">遠征成功</span>
+      </p>
+      <div class="frame c-green">
+        <video class="lazy-video" muted loop playsinline poster="assets/media/digest.webp" data-src="assets/media/digest.mp4" aria-label="タイトルから戦闘・強化・ボス・クリアまでのダイジェスト"></video>
+      </div>
+      <figcaption>ダイジェスト。1回の遠征を、最初から最後まで通しで遊べます。</figcaption>
+    </figure>
+
+    <h3 class="sub-title">開発初期 <span aria-hidden="true">→</span> 現在</h3>
+    <div class="compare">
+      <figure class="compare-item">
+        <p class="media-label c-muted">開発初期</p>
+        <a class="frame c-muted zoomable" href="assets/media/early-build.webp" data-lightbox data-caption="開発初期の画面">
+          <img src="assets/media/early-build.webp" width="1580" height="893" loading="lazy" alt="開発初期の画面。2Dの平面に図形の敵と緑のブロックが並ぶ">
+        </a>
+        <ul class="dot-list">
+          <li>2Dの平面ステージ</li>
+          <li>画面全体に1段のブルーム</li>
+          <li>経験値で進化するだけの流れ</li>
+        </ul>
+      </figure>
+      <div class="compare-arrow" aria-hidden="true">→</div>
+      <figure class="compare-item">
+        <p class="media-label c-cyan">現在</p>
+        <a class="frame c-cyan zoomable" href="assets/media/combat.webp" data-lightbox data-caption="現在の戦闘画面">
+          <img src="assets/media/combat.webp" width="1594" height="890" loading="lazy" alt="現在の画面。湾曲したCRT風の画面に、縦に積んだ3Dブロックと光る敵が並ぶ">
+        </a>
+        <ul class="dot-list accent">
+          <li>縦に積んだ3Dブロック、CRT風の画面</li>
+          <li>ピラミッド方式のブルーム + 残像</li>
+          <li>ルート選択・強化カード・ボス戦</li>
+        </ul>
+      </figure>
+    </div>
+
+    <figure class="playthrough" id="playthrough">
+      <div class="playthrough-head">
+        <div><p class="kicker">FULL PLAYTHROUGH</p><h3>プレイ動画（約5分・音声あり）</h3></div>
+        <p class="muted">タイトルからボス撃破、遠征成功まで編集なしで収録しています。</p>
+      </div>
+      <div class="frame c-pink">
+        <video controls preload="none" playsinline poster="assets/media/playthrough.webp" aria-label="たたかうせんしゃ 通しプレイ動画">
+          <source src="assets/media/playthrough.mp4" type="video/mp4">
+          <a href="assets/media/playthrough.mp4">プレイ動画（MP4）を開く</a>
+        </video>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 03 GAMEPLAY ============ -->
+<section class="section" id="gameplay" aria-labelledby="gameplay-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="section-num">03</p>
+      <div><p class="kicker">GAMEPLAY</p><h2 id="gameplay-title">1回のプレイの流れ</h2></div>
+    </header>
+
+    <ol class="loop-flow" aria-label="1回の遠征の流れ">
+      <li class="c-muted">タイトル</li>
+      <li class="c-muted">チュートリアル</li>
+      <li class="loop-box">
+        <span class="loop-row"><span class="c-cyan">ルートマップ</span><b aria-hidden="true">⇄</b><span class="c-yellow">戦闘・強化・修理</span></span>
+        <small>↻ 地点を選んで、くり返す</small>
+      </li>
+      <li class="c-pink">最終決戦（ボス）</li>
+      <li class="c-green">遠征成功</li>
+    </ol>
+
+    <div class="media-pair">
+      <figure>
+        <p class="media-label c-cyan">戦・宝・改・修理から行き先を選ぶ</p>
+        <a class="frame c-cyan zoomable" href="assets/media/route-map.webp" data-lightbox data-caption="ルートマップ">
+          <img src="assets/media/route-map.webp" width="1594" height="890" loading="lazy" alt="ひし形のノードが線でつながったルートマップ。クリア済みの地点が緑に光る">
+        </a>
+      </figure>
+      <figure>
+        <p class="media-label c-green">戦闘クリア → 次の地点へ</p>
+        <div class="frame c-green">
+          <video class="lazy-video" muted loop playsinline poster="assets/media/route-clear.webp" data-src="assets/media/route-clear.mp4" aria-label="戦闘をクリアしてルートマップに戻り、次の地点を選ぶ様子"></video>
+        </div>
+      </figure>
+    </div>
+
+    <!-- 戦闘 -->
+    <article class="feature" aria-labelledby="combat-title">
+      <h3 class="feature-title" id="combat-title"><span class="c-cyan">戦闘</span>敵とブロックを壊して、通貨を集める</h3>
+      <div class="feature-grid">
+        <div class="frame c-cyan">
+          <video class="lazy-video" muted loop playsinline poster="assets/media/combat-blocks.webp" data-src="assets/media/combat-blocks.mp4" aria-label="3Dブロックを遮蔽物にしながら敵と撃ち合う戦闘"></video>
+        </div>
+        <div class="stack">
+          <div class="card c-cyan"><h4>目標は2種類</h4><p>敵とブロックを倒す／通貨ボックスを回収する。</p></div>
+          <div class="card c-pink"><h4>3Dブロック</h4><p>縦に積んだブロックが遮蔽物になる。</p></div>
+          <div class="card c-yellow"><h4>通貨</h4><p>強化・修理に使う。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 強化 -->
+    <article class="feature" aria-labelledby="upgrade-title">
+      <h3 class="feature-title" id="upgrade-title"><span class="c-yellow">強化</span>3枚から1枚選んで、ビルドを作る</h3>
+      <div class="media-pair">
+        <figure>
+          <p class="media-label c-yellow">強化を選ぶ</p>
+          <a class="frame c-yellow zoomable" href="assets/media/upgrade-shop.webp" data-lightbox data-caption="強化工房：3枚のカードから1枚を選ぶ">
+            <img src="assets/media/upgrade-shop.webp" width="1594" height="890" loading="lazy" alt="強化工房の画面。貫通・ターゲットペインター・ジャスト回避の3枚のカードが並ぶ">
+          </a>
+        </figure>
+        <figure>
+          <p class="media-label c-pink">強化後の戦闘</p>
+          <div class="frame c-pink">
+            <video class="lazy-video" muted loop playsinline poster="assets/media/upgrade-combat.webp" data-src="assets/media/upgrade-combat.mp4" aria-label="強化を重ねた後の戦闘。弾が貫通し、壁で跳ね返る"></video>
+          </div>
+        </figure>
+      </div>
+      <ul class="perk-grid" aria-label="強化の例">
+        <li class="card c-cyan"><h4>貫通</h4><p>敵を貫いて奥にも当たる</p></li>
+        <li class="card c-pink"><h4>壁反射</h4><p>壁で弾が跳ね返る</p></li>
+        <li class="card c-yellow"><h4>過負荷</h4><p>ダッシュ後に連射が速く</p></li>
+        <li class="card c-green"><h4>精密ドローン</h4><p>ドローンの狙いが正確に</p></li>
+      </ul>
+    </article>
+
+    <!-- ボス -->
+    <article class="feature" aria-labelledby="boss-title">
+      <h3 class="feature-title" id="boss-title"><span class="c-pink">ボス戦</span>2段階の攻撃パターン</h3>
+      <p class="feature-lead">予告線を見て避け、攻撃の後のスキに床のコアを攻撃する——というリズムで組んでいます。</p>
+      <div class="media-pair">
+        <figure>
+          <p class="media-label c-pink">第1段階：降下突撃・奥行き弾幕</p>
+          <div class="frame c-pink">
+            <video class="lazy-video" muted loop playsinline poster="assets/media/boss-phase1.webp" data-src="assets/media/boss-phase1.mp4" aria-label="ボス第1段階。ボスが降下して突撃し、奥から弾幕を撃つ"></video>
+          </div>
+        </figure>
+        <figure>
+          <p class="media-label c-yellow">第2段階：床接続ビーム → 撃破</p>
+          <div class="frame c-yellow">
+            <video class="lazy-video" muted loop playsinline poster="assets/media/boss-phase2.webp" data-src="assets/media/boss-phase2.mp4" aria-label="ボス第2段階。床とつながるビームを避けて撃破する"></video>
+          </div>
+        </figure>
+      </div>
+    </article>
+
+    <!-- 演出 -->
+    <article class="feature" aria-labelledby="camera-title">
+      <h3 class="feature-title" id="camera-title"><span class="c-green">演出</span>登場と撃破のカメラワーク</h3>
+      <div class="media-pair">
+        <figure>
+          <p class="media-label c-cyan">登場：寄り → 引きで戦闘へ</p>
+          <div class="frame c-cyan">
+            <video class="lazy-video" muted loop playsinline poster="assets/media/boss-intro.webp" data-src="assets/media/boss-intro.mp4" aria-label="ボス登場演出。黒帯が入り、カメラがボスに寄ってから引く"></video>
+          </div>
+          <figcaption>黒帯 + 寄りのカメラ → 通常距離で戦闘（両者が入るよう自動で引く）</figcaption>
+        </figure>
+        <figure>
+          <p class="media-label c-pink">撃破：寄り → 連続爆発 → タイトル</p>
+          <div class="frame c-pink">
+            <video class="lazy-video" muted loop playsinline poster="assets/media/boss-defeat.webp" data-src="assets/media/boss-defeat.mp4" aria-label="ボス撃破演出。カメラが寄って連続爆発が起こる"></video>
+          </div>
+          <figcaption>寄り + 連続爆発、最後に大爆発でタイトルへ。</figcaption>
+        </figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 04 TECH ============ -->
+<section class="section section-alt" id="tech" aria-labelledby="tech-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="section-num">04</p>
+      <div><p class="kicker">BEHIND THE SCREEN</p><h2 id="tech-title">光る画面を支える技術</h2></div>
+    </header>
+    <nav class="tech-index" aria-label="技術の目次">
+      <a class="c-cyan" href="#bloom"><b>①</b>ピラミッド方式のブルーム</a>
+      <a class="c-pink" href="#phosphor"><b>②</b>残像とCRT風の画面</a>
+      <a class="c-green" href="#neon3d"><b>③</b>ボスの3Dネオン表現</a>
+      <a class="c-yellow" href="#others"><b>＋</b>その他の実装・ツール</a>
+    </nav>
+
+    <!-- ① Bloom -->
+    <article class="tech" id="bloom" aria-labelledby="bloom-title">
+      <h3 class="tech-title"><span class="tech-no c-cyan">①</span><span id="bloom-title">ピラミッド方式のブルーム</span></h3>
+      <ol class="steps">
+        <li class="c-cyan">明るい所を抽出</li>
+        <li class="c-cyan">縮小を何段も<small>1/2 → 1/4 → … 1/32</small></li>
+        <li class="c-pink">拡大しながら足し合わせる</li>
+        <li class="c-green">元の画面に合成</li>
+      </ol>
+      <div class="media-pair">
+        <figure>
+          <p class="media-label c-muted">ブルーム OFF</p>
+          <a class="frame c-muted zoomable" href="assets/media/bloom-off.webp" data-lightbox data-caption="ブルーム OFF">
+            <img src="assets/media/bloom-off.webp" width="1600" height="900" loading="lazy" alt="ブルームなしの戦闘画面。線はくっきりしているが光のにじみがない">
+          </a>
+        </figure>
+        <figure>
+          <p class="media-label c-cyan">ブルーム ON</p>
+          <a class="frame c-cyan zoomable" href="assets/media/combat-now.webp" data-lightbox data-caption="ブルーム ON">
+            <img src="assets/media/combat-now.webp" width="1600" height="900" loading="lazy" alt="ブルームありの戦闘画面。光る線のまわりに柔らかいにじみが広がる">
+          </a>
+        </figure>
+      </div>
+      <p class="callout c-cyan"><span>前回</span>1回ぼかして加算 <b aria-hidden="true">→</b> <span>今回</span>段階的に重ねて、柔らかく広がる光に</p>
+
+      <h4 class="sub-title small">ピラミッドの各段が作る光</h4>
+      <a class="frame c-cyan zoomable wide" href="assets/media/bloom-pyramid.webp" data-lightbox data-caption="ピラミッドの各段を取り出した比較">
+        <img src="assets/media/bloom-pyramid.webp" width="1600" height="450" loading="lazy" alt="ブルームのピラミッドを1段ずつ取り出した8枚の比較画像。段が粗くなるほどにじみが大きく広がる">
+      </a>
+      <div class="three-col">
+        <div class="card c-cyan"><h4>細かい段（1/2・1/4）</h4><p>線のすぐそばの、細く鋭いにじみ。</p></div>
+        <div class="card c-pink"><h4>粗い段（1/16・1/32）</h4><p>画面に広がる、大きく柔らかいにじみ。</p></div>
+        <div class="card c-green"><h4>ゲーム中に切り替え</h4><p><kbd>B</kbd> で表示を切替、<kbd>V</kbd> で一時停止して同じ瞬間を見比べられます。</p></div>
+      </div>
+      <p class="takeaway">全部を足すことで、<strong>芯のくっきりした光</strong>と<strong>広いにじみ</strong>を両立。</p>
+    </article>
+
+    <!-- ② Phosphor -->
+    <article class="tech" id="phosphor" aria-labelledby="phosphor-title">
+      <h3 class="tech-title"><span class="tech-no c-pink">②</span><span id="phosphor-title">残像（Phosphor）とCRT風の画面</span></h3>
+      <div class="feature-grid reverse">
+        <div class="frame c-pink">
+          <video class="lazy-video" muted loop playsinline poster="assets/media/phosphor.webp" data-src="assets/media/phosphor.mp4" aria-label="チュートリアル画面。ダッシュや弾の光が尾を引く"></video>
+        </div>
+        <div>
+          <ol class="cycle" aria-label="残像の処理">
+            <li class="c-muted">前のフレーム（履歴）</li>
+            <li class="c-cyan">少し暗くする</li>
+            <li class="c-pink">今のフレームと合成</li>
+            <li class="c-green">次の履歴として保存</li>
+          </ol>
+          <p class="cycle-note"><span class="c-yellow">↻ 毎フレームくり返す</span> → 光が尾を引く</p>
+          <p>ダッシュや弾の光が尾を引くように見えます。最後にUIも含めた画面全体へ湾曲・走査線をかけて、ブラウン管風に仕上げています。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ③ 3D neon -->
+    <article class="tech" id="neon3d" aria-labelledby="neon3d-title">
+      <h3 class="tech-title"><span class="tech-no c-green">③</span><span id="neon3d-title">ボスの3Dネオン表現</span></h3>
+      <p class="feature-lead">普通の3Dモデルを、暗い本体と光る線だけで描いています。</p>
+      <div class="neon3d">
+        <ol class="pipeline">
+          <li class="c-cyan"><b>01</b>スキニング（骨でモデルを動かす）</li>
+          <li class="c-muted"><b>02</b>本体を暗く描く</li>
+          <li class="c-pink"><b>03</b>ステンシルで外側だけに輪郭線</li>
+          <li class="c-pink"><b>04</b>テクスチャの境目から内部の線</li>
+          <li class="c-yellow"><b>05</b>HDRで光らせて → ブルーム</li>
+          <li class="pipeline-note">ここまでは、どのモデルでも使い回せる</li>
+        </ol>
+        <figure>
+          <p class="media-label c-cyan">待機 → 攻撃 → 回転</p>
+          <div class="frame c-cyan tall">
+            <video class="lazy-video" muted loop playsinline poster="assets/media/boss-3d-motion.webp" data-src="assets/media/boss-3d-motion.mp4" aria-label="ネオンで描いた3Dモデルが待機・攻撃・回転のモーションをする"></video>
+          </div>
+        </figure>
+        <figure>
+          <p class="media-label c-pink">撃破時のディゾルブ</p>
+          <div class="frame c-pink tall">
+            <video class="lazy-video" muted loop playsinline poster="assets/media/boss-dissolve.webp" data-src="assets/media/boss-dissolve.mp4" aria-label="ネオンの3Dモデルがノイズで溶けるように消える"></video>
+          </div>
+        </figure>
+      </div>
+
+      <div class="limit">
+        <h4 class="sub-title small">汎用化の限界 ― 細部はまだ人の手</h4>
+        <div class="feature-grid">
+          <figure>
+            <a class="frame c-yellow zoomable" href="assets/media/line-compare.webp" data-lightbox data-caption="左：自動だけ／右：手で調整した後">
+              <img src="assets/media/line-compare.webp" width="1040" height="420" loading="lazy" alt="左は自動で線を拾った顔で、髪の模様まで線になっている。右は手で調整した後で、顔の線が読みやすい">
+            </a>
+            <figcaption><span class="c-muted-text">左：自動だけ</span>／<span class="c-yellow-text">右：手で調整した後</span>。自動だと髪のハイライトや模様まで線になり、顔の線が埋もれる。</figcaption>
+          </figure>
+          <div class="card c-yellow">
+            <h4>モデルごとに手で調整している所</h4>
+            <ul class="dot-list">
+              <li>材質ごとの線の強さ・しきい値（顔は強く、肌や服は弱く）</li>
+              <li>前髪などの専用の線マスク（PNG）</li>
+              <li>半透明の目のパーツの切り抜き</li>
+              <li>ボスとしての大きさ・浮き方・向き</li>
+              <li>アニメーション（骨の回転を手で指定）</li>
+            </ul>
+            <p class="next-goal"><span>次の目標</span>手作業の部分を減らし、新しいモデルを入れてもすぐ使える形に。</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- others -->
+    <article class="tech" id="others" aria-labelledby="others-title">
+      <h3 class="tech-title"><span class="tech-no c-yellow">＋</span><span id="others-title">その他の実装</span></h3>
+      <ul class="impl-grid">
+        <li class="card c-cyan"><h4>GPUパーティクル</h4><p>コンピュートシェーダで更新、ExecuteIndirectで描画。</p></li>
+        <li class="card c-pink"><h4>スキニング + アウトライン</h4><p>ボスのアニメーション、ステンシルで輪郭を描く。</p></li>
+        <li class="card c-green"><h4>ディゾルブ</h4><p>ノイズで溶けるように消える。</p></li>
+        <li class="card c-yellow"><h4>シャドウマップ / PBR</h4><p>影と物理ベースのライティング。</p></li>
+        <li class="card c-cyan"><h4>FFT 海洋シミュレーション</h4><p>コンピュートシェーダで波の高さを計算。</p></li>
+        <li class="card c-pink"><h4>SSAO / SSR</h4><p>画面の深度・法線から陰影と反射を計算。</p></li>
+      </ul>
+      <p class="note">※ エンジン側で実装済みの機能（本編で使っていないものを含む）</p>
+
+      <div class="feature-grid tools">
+        <a class="frame c-green zoomable" href="assets/media/tuning-tool.webp" data-lightbox data-caption="ImGuiによる調整ツール">
+          <img src="assets/media/tuning-tool.webp" width="960" height="540" loading="lazy" alt="ImGuiの調整ウィンドウ。スライダーやチェックボックスで描画やゲームの値を変更できる">
+        </a>
+        <div class="card c-green">
+          <h4>遊んで、変えて、すぐに確かめる</h4>
+          <p>武器・発光・敵・HUDなどの値をImGuiでその場で変更し、JSONへ保存・読み込み。調整のたびにコードを書き換えて再ビルドする手間を減らしています。</p>
+          <ul class="chips small"><li class="c-green">ImGui</li><li class="c-green">JSON</li><li class="c-green">ホットチューニング</li></ul>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 05 NEXT ============ -->
+<section class="section" id="next" aria-labelledby="next-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="section-num">05</p>
+      <div><p class="kicker">WHAT'S NEXT</p><h2 id="next-title">見えてきた課題と、次にやること</h2></div>
+    </header>
+    <p class="section-lead">遊べる形にはなりました。ゲームとしても技術としても、まだ足りないところを4つ挙げて、次の一手を決めています。</p>
+
+    <div class="issue-grid">
+      <article class="issue c-pink">
+        <p class="issue-no">①</p>
+        <h3>後半が単調になる</h3>
+        <p class="issue-now">部屋の形はテンプレートから選ぶだけで、敵の配置・出方も毎回同じ。2回目以降は展開が読めてしまう。</p>
+        <ul class="dot-list">
+          <li>部屋と敵の組み合わせを自動で作る</li>
+          <li>床や壁のギミックを追加</li>
+          <li>強い敵（エリート）の組み合わせを増やす</li>
+        </ul>
+        <p class="issue-goal">「ローグライトなのに毎回同じ」をなくす</p>
+      </article>
+      <article class="issue c-yellow">
+        <p class="issue-no">②</p>
+        <h3>画面の主張が強すぎる</h3>
+        <a class="frame c-yellow zoomable issue-img" href="assets/media/damage.webp" data-lightbox data-caption="被弾時の画面。今は赤文字の「ダメージ」だけ">
+          <img src="assets/media/damage.webp" width="1600" height="900" loading="lazy" alt="被弾時の画面。光る要素が多く、HPバーやダメージ表示が目立たない">
+        </a>
+        <p class="issue-now">すべてが光るので、HPバーやHUDが埋もれる。ダメージを受けたかが分かりにくい。</p>
+        <ul class="dot-list">
+          <li>光らせるものに優先順位をつける</li>
+          <li>被弾時に画面の縁を赤く、自機を点滅</li>
+          <li>HUDを整理して大事な数字だけ見せる</li>
+        </ul>
+        <p class="issue-goal">「きれい」と「分かりやすい」を両立させる</p>
+      </article>
+      <article class="issue c-cyan">
+        <p class="issue-no">③</p>
+        <h3>3Dの表現力が弱い</h3>
+        <p class="issue-now">今ある3Dはネオンの線画だけ。リアル / アニメ調の3Dに必要な機能はまだ入っていない。</p>
+        <ul class="todo-tags" aria-label="未実装の機能">
+          <li>レイトレーシング<small>影・反射・GI</small></li>
+          <li>流体<small>煙・水・炎</small></li>
+          <li>DLSS / アップスケール<small>高解像度を軽く</small></li>
+          <li>リアル / アニメ調<small>PBR・トゥーン</small></li>
+        </ul>
+        <p class="issue-goal">このゲームと並行して、3D表現を見せるゲームか技術デモを作る</p>
+      </article>
+      <article class="issue c-green">
+        <p class="issue-no">④</p>
+        <h3>エンジンを人が使えない</h3>
+        <p class="issue-now">自分以外が使ったことがなく、ゲームの中身は全部C++で書く。外から触れるのはJSONの数値調整だけ。</p>
+        <ul class="dot-list">
+          <li>機能を部品として組み合わせられる形に</li>
+          <li>配置や設定をエディタ上で編集</li>
+          <li>実際に誰かに使ってもらい、意見をもらう</li>
+        </ul>
+        <p class="issue-goal">「自分専用の道具」から「人が使えるエンジン」へ</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 TEAM ============ -->
+<section class="section section-alt" id="team" aria-labelledby="team-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="section-num">06</p>
+      <div><p class="kicker">TEAM PROJECT</p><h2 id="team-title">Resonance <small>チーム制作 / 4人</small></h2></div>
+    </header>
+    <div class="feature-grid">
+      <div class="media-stack">
+        <a class="frame c-pink zoomable" href="assets/images/resonance-cards.webp" data-lightbox data-caption="Resonance：カード選択と戦闘演出">
+          <img src="assets/images/resonance-cards.webp" width="1598" height="894" loading="lazy" alt="手前にカードの手札が並び、奥のフィールドでキャラクターが戦うResonanceの画面">
+        </a>
+        <a class="frame c-yellow zoomable" href="assets/images/resonance-effects.webp" data-lightbox data-caption="Resonance：攻撃エフェクト（担当）">
+          <img src="assets/images/resonance-effects.webp" width="1598" height="894" loading="lazy" alt="Resonanceの戦闘フィールドで炎のエフェクトを表示した場面">
+        </a>
+      </div>
+      <div class="stack">
+        <p>カードで戦い、場に残ったカードでポーカーの役をそろえるカードバトル。チームの中で、<strong>GPUパーティクル</strong>と<strong>ポストエフェクト</strong>を担当しました。</p>
+        <div class="card c-pink"><h4>担当</h4><p>GPUパーティクル・ポストエフェクト</p></div>
+        <div class="card c-cyan"><h4>環境</h4><p>自作エンジン / DirectX 12</p></div>
+        <p class="note">ゲーム全体はチーム制作です。画像は担当した演出に関連する場面です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 ABOUT ============ -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="section-num">07</p>
+      <div><p class="kicker">ABOUT</p><h2 id="about-title">プロフィール</h2></div>
+    </header>
+    <div class="about card c-cyan">
+      <div class="about-mark" aria-hidden="true">H</div>
+      <div>
+        <h3>堀毛 翔斗 <small>ホリケ ハヤト / Horike Hayato</small></h3>
+        <p>C++ / DirectX 12を中心に、個人制作とチーム制作に取り組んでいます。好きな表現をシェーダーから自分で作り、それをゲームの中で「遊べる」形にするところまでを大切にしています。</p>
+        <dl class="about-facts">
+          <div><dt>制作分野</dt><dd>ゲームプログラミング / 描画 / ツール</dd></div>
+          <div><dt>使用技術</dt><dd>C++ / DirectX 12 / HLSL / ImGui / Git</dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/MinaWoMinasai" target="_blank" rel="noopener noreferrer">MinaWoMinasai ↗</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
-<footer class="site-footer">
-<div class="container footer-inner"><p>© 2026 Horike Hayato <span>GAME PROGRAMMING PORTFOLIO</span></p><a class="text-link" href="#top">先頭へ <span aria-hidden="true">↑</span></a><button aria-pressed="false" class="glow-toggle" hidden="" type="button">装飾の発光を控えめに</button></div>
 
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>© 2026 Horike Hayato <span>GAME PROGRAMMING PORTFOLIO</span></p>
+    <p class="credit">使用3Dモデル：VRoid Project / AvatarSample_B（描画・状態連携・本編への組み込みを紹介しています）</p>
+    <a href="#top">先頭へ ↑</a>
+  </div>
 </footer>
-<dialog aria-labelledby="dialog-caption" class="lightbox" id="image-dialog">
-<div class="lightbox-bar"><p id="dialog-caption">ゲーム画面</p><button aria-label="画像を閉じる" autofocus="" class="dialog-close" type="button">閉じる <span aria-hidden="true">×</span></button></div>
-<img alt="" id="dialog-image"/>
-<p class="lightbox-hint">Escキーでも閉じられます。</p>
+
+<dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-caption">
+  <div class="lightbox-bar"><p id="lightbox-caption"></p><button type="button" class="lightbox-close" aria-label="閉じる">閉じる ×</button></div>
+  <img id="lightbox-image" alt="">
 </dialog>
 </body>
 </html>
